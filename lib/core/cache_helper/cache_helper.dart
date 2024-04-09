@@ -19,13 +19,13 @@ class CacheHelper {
 
   static bool isEnglish() => getCurrentLanguage() == "en";
 
-  static String initialRoute() {
-    return getIt.get<SharedPreferences>().getBool(CacheKeys.getStarted) == true
-        ? getIt.get<SharedPreferences>().get(CacheKeys.userToken) == null
-            ? Routes.loginScreen
-            : Routes.mainLayoutScreen
-        : Routes.getStartRoute;
-  }
+  // static String initialRoute() {
+  //   return getIt.get<SharedPreferences>().getBool(CacheKeys.getStarted) == true
+  //       ? getIt.get<SharedPreferences>().get(CacheKeys.userToken) == null
+  //           ? Routes.loginScreen
+  //           : Routes.mainLayoutScreen
+  //       : Routes.getStartRoute;
+  // }
 
   static void changeLanguageToEn() async {
     await CacheHelper.saveData(key: CacheKeys.currentLanguage, value: "en");
