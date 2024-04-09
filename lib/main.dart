@@ -1,13 +1,15 @@
 import 'package:animations/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'core/routing/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(MyApp(
-    appRouter: AppRouter(),
-  ));
+  runApp(
+    MyApp(
+      appRouter: AppRouter(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute:Routes.homeScreen,
+        initialRoute: Routes.homeScreen,
       ),
     );
   }

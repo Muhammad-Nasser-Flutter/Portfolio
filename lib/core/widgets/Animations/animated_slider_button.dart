@@ -47,7 +47,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
               AnimatedContainer(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 curve: Curves.easeOut,
-                duration: const Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 500),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: const Color(0xFFffb400),
