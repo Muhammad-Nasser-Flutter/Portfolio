@@ -9,6 +9,7 @@ class Assets {
   static const String workIcon = "assets/images/workIcon.svg";
   static const String exitIcon = "assets/images/exitIcon.svg";
   static const String myPicture = "assets/images/My Picture.jpg";
+  static const String homeBG = "assets/images/homeBG.jpg";
 
 }
 

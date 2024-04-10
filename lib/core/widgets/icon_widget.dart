@@ -28,6 +28,11 @@ class IconWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           color: bGColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+            )
+          ]
         ),
         child: Container(
           padding: EdgeInsets.all(padding),

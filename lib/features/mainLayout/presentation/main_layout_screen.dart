@@ -27,7 +27,15 @@ class MainLayoutScreen extends StatelessWidget {
                 return Stack(
                   alignment: AlignmentDirectional.centerEnd,
                   children: [
-                    cubit.screens[cubit.currentIndex],
+                    Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                Assets.homeBG,
+                              ),
+                              fit: BoxFit.cover),
+                        ),
+                        child: cubit.screens[cubit.currentIndex]),
                     PositionedDirectional(
                       end: 20,
                       child: FadeInAnimation(
@@ -37,7 +45,7 @@ class MainLayoutScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: List.generate(
                             cubit.screens.length,
-                                (index) => NavItem(
+                            (index) => NavItem(
                               bGColor: cubit.currentIndex == index
                                   ? AppColors.primaryColor
                                   : AppColors.grey,
@@ -52,14 +60,23 @@ class MainLayoutScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   ],
                 );
-              }else{
+              }
+              else {
                 return Stack(
                   alignment: AlignmentDirectional.centerEnd,
                   children: [
-                    cubit.screens[cubit.currentIndex],
+                    Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              Assets.homeBG,
+                            ),
+                            fit: BoxFit.cover),
+                      ),
+                      child: cubit.screens[cubit.currentIndex],
+                    ),
                     PositionedDirectional(
                       top: 20,
                       end: 20,
@@ -74,13 +91,10 @@ class MainLayoutScreen extends StatelessWidget {
                         },
                       ),
                     ),
-
                   ],
                 );
-
-
               }
-            }
+            },
           ),
         );
       },

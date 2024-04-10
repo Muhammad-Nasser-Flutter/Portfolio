@@ -5,8 +5,10 @@ import '../custom_texts.dart';
 import 'fade_in_animation.dart';
 
 class AnimatedSliderButton extends StatefulWidget {
-  AnimatedSliderButton({super.key,});
-  bool buttonHovered = false ;
+  AnimatedSliderButton({
+    super.key,
+  });
+  bool buttonHovered = false;
 
   @override
   State<AnimatedSliderButton> createState() => _AnimatedSliderButtonState();
@@ -18,15 +20,24 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       opaque: false,
       onEnter: (event) {
-        if(mounted) setState(() {widget.buttonHovered = true;});
+        if (mounted) {
+          setState(() {
+            widget.buttonHovered = true;
+          });
+        }
       },
       onExit: (event) {
-        if(mounted) setState(() {widget.buttonHovered = false;});
+        if (mounted) {
+          setState(() {
+            widget.buttonHovered = false;
+          });
+        }
       },
       child: InkWell(
         onTap: () {
