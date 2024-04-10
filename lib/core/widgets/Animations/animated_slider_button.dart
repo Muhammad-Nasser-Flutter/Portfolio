@@ -1,3 +1,4 @@
+import 'package:animations/features/mainLayout/Bloc/main_layout_cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../custom_texts.dart';
@@ -13,22 +14,24 @@ class AnimatedSliderButton extends StatefulWidget {
 
 class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return MouseRegion(
       opaque: false,
       onEnter: (event) {
-        setState(() {
-          widget.buttonHovered = true;
-        });
+        if(mounted) setState(() {widget.buttonHovered = true;});
       },
       onExit: (event) {
-        setState(() {
-          widget.buttonHovered = false;
-        });
+        if(mounted) setState(() {widget.buttonHovered = false;});
       },
-      child: FadeInAnimation(
-        delay: 1,
-        startingOffset: const Offset(0, 500),
+      child: InkWell(
+        onTap: () {
+          MainLayoutCubit.get(context).changeBottomNav(1);
+        },
         child: Container(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(

@@ -27,19 +27,25 @@ class _FadeInAnimationState extends State<FadeInAnimation>
 
     opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Curves.fastEaseInToSlowEaseOut))
       ..addListener(() {
-        setState(() {});
+        if(mounted) setState(() {});
       });
     offsetAnimation =
     Tween<Offset>(begin: widget.startingOffset, end: const Offset(0, -0))
         .animate(CurvedAnimation(parent: controller, curve: Curves.fastEaseInToSlowEaseOut))
       ..addListener(() {
-        setState(() {});
+        if(mounted) setState(() {});
       });
-    controller.forward();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    controller.forward();
     return Transform.translate(
       offset: offsetAnimation.value,
       child: Opacity(

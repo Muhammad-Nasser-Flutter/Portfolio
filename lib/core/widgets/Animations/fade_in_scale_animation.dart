@@ -28,23 +28,30 @@ class _FadeInScaleAnimationState extends State<FadeInScaleAnimation>
       duration: Duration(milliseconds: (2000 * widget.delay).round()),
     );
 
-    opacityAnimation = Tween<double>(begin: 0.2, end: 1.0)
-        .animate(CurvedAnimation(parent: controller, curve: Curves.fastEaseInToSlowEaseOut))
+    opacityAnimation = Tween<double>(begin: 0, end: 1.0).animate(
+        CurvedAnimation(
+            parent: controller, curve: Curves.fastEaseInToSlowEaseOut))
       ..addListener(() {
-        setState(() {});
+        if (mounted) setState(() {});
       });
     offsetAnimation =
         Tween<Offset>(begin: widget.startingOffset, end: const Offset(0, 0))
             .animate(CurvedAnimation(
                 parent: controller, curve: Curves.fastEaseInToSlowEaseOut))
           ..addListener(() {
-            setState(() {});
+            if (mounted) setState(() {});
           });
-    controller.forward();
   }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    controller.forward();
     return Transform.scale(
       scale: opacityAnimation.value,
       child: Transform.translate(

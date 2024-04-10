@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../custom_texts.dart';
-import 'fade_in_scale_animation.dart';
-
 class MouseCircleRegion extends StatefulWidget {
   MouseCircleRegion({
     super.key,
@@ -17,26 +14,35 @@ class MouseCircleRegion extends StatefulWidget {
 
 class _MouseCircleRegionState extends State<MouseCircleRegion> {
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onHover: (p) {
-        setState(
-          () {
-            Future.delayed(
-              const Duration(milliseconds: 20),
-              () {
-                widget.mouseOffset = p.position;
-              },
-            );
-          },
-        );
+        if(mounted){
+          setState(
+                () {
+              Future.delayed(
+                const Duration(milliseconds: 20),
+                    () {
+                  widget.mouseOffset = p.position;
+                },
+              );
+            },
+          );
+        }
       },
       onExit: (p) {
-        setState(
-          () {
-            widget.mouseOffset = p.position;
-          },
-        );
+        if(mounted){
+          setState(
+                () {
+              widget.mouseOffset = p.position;
+            },
+          );
+        }
       },
       child: Stack(
         children: [

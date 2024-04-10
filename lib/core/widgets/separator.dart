@@ -9,10 +9,10 @@ class Separator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: margin??0),
+      margin: const EdgeInsetsDirectional.only(start: 15),
       width: double.maxFinite,
-      height: 1.h,
-      color: Colors.grey.withOpacity(0.3),
+      height: 1,
+      color: Colors.grey.withOpacity(0.2),
     );
   }
 }
