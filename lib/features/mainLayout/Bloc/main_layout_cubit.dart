@@ -23,7 +23,7 @@ class MainLayoutCubit extends Cubit<MainLayoutState> {
 
   List<Widget> screens = [
     const HomeScreen(),
-    const AboutScreen(),
+    AboutScreen(),
     const PortfolioScreen(),
     const MailScreen(),
   ];

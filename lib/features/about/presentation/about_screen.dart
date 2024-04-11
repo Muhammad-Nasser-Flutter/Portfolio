@@ -1,15 +1,18 @@
+import 'package:animations/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../core/theming/assets.dart';
 import '../../../core/widgets/Animations/animated_slider_button.dart';
+import '../../../core/widgets/Animations/fade_in_animation.dart';
 import '../../../core/widgets/Animations/fade_in_scale_animation.dart';
 import '../../../core/widgets/Animations/mouse_circle_region.dart';
 import '../../../core/widgets/custom_texts.dart';
 import '../../../core/widgets/icon_widget.dart';
 
 class AboutScreen extends StatelessWidget {
-  const AboutScreen({super.key});
+  AboutScreen({super.key});
+  final ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,7 @@ class AboutScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 20.0),
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: FadeInScaleAnimation(
                               delay: 1.2,
                               startingOffset: const Offset(-500, 0),
@@ -68,7 +71,7 @@ class AboutScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 20.0),
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: FadeInScaleAnimation(
                               delay: 1.4,
                               startingOffset: const Offset(500, 0),
@@ -85,7 +88,7 @@ class AboutScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 25.0),
+                                const EdgeInsets.symmetric(horizontal: 25.0),
                             child: FadeInScaleAnimation(
                               delay: 1.6,
                               startingOffset: const Offset(500, 0),
@@ -94,7 +97,7 @@ class AboutScreen extends StatelessWidget {
                                 textColor: Colors.white,
                                 alignment: TextAlign.start,
                                 text:
-                                "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
+                                    "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
                               ),
                             ),
                           ),
@@ -114,34 +117,58 @@ class AboutScreen extends StatelessWidget {
               ),
             ],
           );
-        }
-        else if (sizingInformation.maxWidth > 520 &&
+        } else if (sizingInformation.maxWidth > 520 &&
             sizingInformation.maxWidth < 980) {
           print("tablet");
           print("${sizingInformation.maxWidth}");
-          return Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              MouseCircleRegion(
+          return MouseCircleRegion(
+            child: Scrollbar(
+              controller: controller,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                controller: controller,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
                       height: 50,
                     ),
-                    const FadeInScaleAnimation(
+                    FadeInScaleAnimation(
                       delay: 1,
-                      startingOffset: Offset(0, -450),
-                      child: CircleAvatar(
-                        radius: 125,
-                        backgroundColor: Color(0xFF252525),
-                        child: CircleAvatar(
-                          radius: 120,
-                          backgroundColor: Color(0xFF252525),
-                          backgroundImage:
-                          AssetImage("assets/images/My Picture.jpg"),
-                        ),
+                      startingOffset: const Offset(0, -450),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Text18(
+                            alignment: TextAlign.center,
+                            text: "RESUME",
+                            size: 110,
+                            spacing: 5,
+                            textColor: Colors.grey.withOpacity(0.2),
+                            weight: FontWeight.w900,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text18(
+                                text: "ABOUT ",
+                                size: 50,
+                                spacing: 2,
+                                textColor: Colors.white,
+                                weight: FontWeight.w900,
+                              ),
+                              Text18(
+                                text: "ME",
+                                size: 50,
+                                spacing: 2,
+                                textColor: AppColors.primaryColor,
+                                weight: FontWeight.w900,
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -149,28 +176,118 @@ class AboutScreen extends StatelessWidget {
                       width: double.maxFinite,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: FadeInScaleAnimation(
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                      child: FadeInAnimation(
                         delay: 1.2,
                         startingOffset: const Offset(-500, 0),
                         child: Text28(
-                          text: "I'M MUHAMMAD NASSER.",
-                          size: 38,
-                          textColor: const Color(0xFFffb400),
+                          text: "PERSONAL INFO.",
+                          size: 28,
+                          textColor: Colors.white,
                           weight: FontWeight.w700,
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: FadeInAnimation(
+                        delay: 1,
+                        startingOffset: const Offset(1000, 0),
+                        child: CircleAvatar(
+                          radius: 105,
+                          backgroundColor: Colors.grey.withOpacity(0.2),
+                          child: const CircleAvatar(
+                            radius: 100,
+                            backgroundColor: Color(0xFF252525),
+                            backgroundImage: AssetImage(Assets.myPicture),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
                       child: FadeInScaleAnimation(
                         delay: 1.4,
                         startingOffset: const Offset(500, 0),
-                        child: Text28(
-                          text: "SOFTWARE ENGINEER",
-                          size: 38,
-                          textColor: Colors.white,
-                          weight: FontWeight.w700,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text28(
+                              text: "First Name :",
+                              size: 18,
+                              textColor: Colors.white.withOpacity(0.8),
+                              weight: FontWeight.w500,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text28(
+                              text: "Muhammad",
+                              size: 18,
+                              textColor: Colors.white,
+                              weight: FontWeight.w500,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                      child: FadeInScaleAnimation(
+                        delay: 1.4,
+                        startingOffset: const Offset(500, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text28(
+                              text: "First Name :",
+                              size: 18,
+                              textColor: Colors.white.withOpacity(0.8),
+                              weight: FontWeight.w500,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text28(
+                              text: "Muhammad",
+                              size: 18,
+                              textColor: Colors.white,
+                              weight: FontWeight.w500,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                      child: FadeInScaleAnimation(
+                        delay: 1.4,
+                        startingOffset: const Offset(500, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text28(
+                              text: "First Name :",
+                              size: 18,
+                              textColor: Colors.white.withOpacity(0.8),
+                              weight: FontWeight.w500,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text28(
+                              text: "Muhammad",
+                              size: 18,
+                              textColor: Colors.white,
+                              weight: FontWeight.w500,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -187,7 +304,7 @@ class AboutScreen extends StatelessWidget {
                           textColor: Colors.white,
                           alignment: TextAlign.center,
                           text:
-                          "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
+                              "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
                         ),
                       ),
                     ),
@@ -197,14 +314,9 @@ class AboutScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
-                bottom: 100,
-                child: AnimatedSliderButton(),
-              ),
-            ],
+            ),
           );
-        }
-        else {
+        } else {
           print("mobile");
           return Stack(
             alignment: Alignment.bottomCenter,
@@ -226,8 +338,7 @@ class AboutScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 100,
                           backgroundColor: Color(0xFF252525),
-                          backgroundImage:
-                          AssetImage("assets/images/My Picture.jpg"),
+                          backgroundImage: AssetImage(Assets.myPicture),
                         ),
                       ),
                     ),
@@ -274,7 +385,7 @@ class AboutScreen extends StatelessWidget {
                           textColor: Colors.white,
                           alignment: TextAlign.center,
                           text:
-                          "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
+                              "I'm a Self-motivated Developer with high level of experience over more than 2 years collaborating and working on multiple mobile app-based projects. Pulls from active knowledge of current technology landscape to promote best practices in mobile app development.",
                         ),
                       ),
                     ),
@@ -283,10 +394,6 @@ class AboutScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-              Positioned(
-                bottom: 100,
-                child: AnimatedSliderButton(),
               ),
             ],
           );
