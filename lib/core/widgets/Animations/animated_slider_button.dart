@@ -6,9 +6,12 @@ import 'fade_in_animation.dart';
 
 class AnimatedSliderButton extends StatefulWidget {
   AnimatedSliderButton({
-    super.key,
+    super.key, this.text, this.icon,this.onTap
   });
   bool buttonHovered = false;
+  String? text;
+  IconData? icon;
+  VoidCallback? onTap;
 
   @override
   State<AnimatedSliderButton> createState() => _AnimatedSliderButtonState();
@@ -40,7 +43,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
         }
       },
       child: InkWell(
-        onTap: () {
+        onTap: widget.onTap ?? () {
           MainLayoutCubit.get(context).changeBottomNav(1);
         },
         child: Container(
@@ -76,7 +79,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
                     width: 10,
                   ),
                   Text16(
-                    text: "MORE ABOUT ME",
+                    text: widget.text??"MORE ABOUT ME",
                     textColor: Colors.white,
                     size: 16,
                   ),
@@ -87,8 +90,8 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> {
                       color: Color(0xFFffb400),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.arrow_forward_ios_rounded,
+                    child: Icon(
+                      widget.icon??Icons.arrow_forward_ios_rounded,
                       color: Colors.white,
                       size: 25,
                     ),

@@ -4,9 +4,11 @@ class MouseCircleRegion extends StatefulWidget {
   MouseCircleRegion({
     super.key,
     required this.child,
+    this.scrollOffset = 0,
   });
   Offset mouseOffset = const Offset(-100, -100);
   final Widget child;
+  double scrollOffset;
 
   @override
   State<MouseCircleRegion> createState() => _MouseCircleRegionState();
@@ -18,27 +20,24 @@ class _MouseCircleRegionState extends State<MouseCircleRegion> {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      opaque: false,
       onHover: (p) {
-        if(mounted){
+        if (mounted) {
           setState(
-                () {
-              Future.delayed(
-                const Duration(milliseconds: 20),
-                    () {
-                  widget.mouseOffset = p.position;
-                },
-              );
+            () {
+              widget.mouseOffset = p.position + Offset(0, widget.scrollOffset);
             },
           );
         }
       },
       onExit: (p) {
-        if(mounted){
+        if (mounted) {
           setState(
-                () {
+            () {
               widget.mouseOffset = p.position;
             },
           );
