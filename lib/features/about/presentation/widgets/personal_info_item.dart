@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../../core/widgets/custom_texts.dart';
 
 class PersonalInfoItem extends StatelessWidget {
-  const PersonalInfoItem({super.key, required this.title, required this.value});
+  const PersonalInfoItem({super.key, required this.title, required this.value, required this.maxWidth});
   final String title;
   final String value;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class PersonalInfoItem extends StatelessWidget {
       children: [
         Text28(
           text: "$title :",
-          size: 18,
+          size: maxWidth>980? 16:maxWidth<520? 16:18,
           textColor: Colors.white.withOpacity(0.5),
           weight: FontWeight.w500,
         ),
@@ -24,7 +25,7 @@ class PersonalInfoItem extends StatelessWidget {
         ),
         Text28(
           text: value,
-          size: 18,
+          size: maxWidth>980? 16:maxWidth<520? 14:18,
           textColor: Colors.white,
           weight: FontWeight.w500,
         ),

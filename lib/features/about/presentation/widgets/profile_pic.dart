@@ -13,12 +13,12 @@ class ProfilePic extends StatelessWidget {
       delay: 1,
       startingOffset: const Offset(1000, 0),
       child: CircleAvatar(
-        radius: 125,
+        radius: maxWidth>980?150:maxWidth>520?125:105,
         backgroundColor: Colors.grey.withOpacity(0.2),
-        child: const CircleAvatar(
-          radius: 120,
-          backgroundColor: Color(0xFF252525),
-          backgroundImage: AssetImage(Assets.myPicture),
+        child: CircleAvatar(
+          radius: maxWidth>980?145:maxWidth>520?120:100,
+          backgroundColor: const Color(0xFF252525),
+          backgroundImage: const AssetImage(Assets.myPicture),
         ),
       ),
     );

@@ -4,16 +4,22 @@ import '../../../../core/theming/colors.dart';
 import '../../../../core/widgets/custom_texts.dart';
 
 class PercentageWidget extends StatefulWidget {
-  const PercentageWidget({super.key, required this.percentage, required this.title});
-  final double percentage ;
+  const PercentageWidget(
+      {super.key,
+      required this.percentage,
+      required this.title,
+      required this.maxWidth});
+  final double percentage;
+  final double maxWidth;
   final String title;
 
   @override
   State<PercentageWidget> createState() => _PercentageWidgetState();
 }
 
-class _PercentageWidgetState extends State<PercentageWidget> with SingleTickerProviderStateMixin {
-  late AnimationController controller ;
+class _PercentageWidgetState extends State<PercentageWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
   late Animation<double>? percentageAnimation;
   @override
   void initState() {
@@ -21,14 +27,20 @@ class _PercentageWidgetState extends State<PercentageWidget> with SingleTickerPr
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: (2000).round()),
-
+      duration: Duration(milliseconds: (3000).round()),
     );
-    percentageAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))
+    percentageAnimation = Tween<double>(begin: 0.0, end: 1.0)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))
       ..addListener(() {
-        if(mounted) setState(() {});
+        if (mounted) setState(() {});
       });
     controller.forward();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -40,13 +52,14 @@ class _PercentageWidgetState extends State<PercentageWidget> with SingleTickerPr
             alignment: Alignment.center,
             children: [
               SizedBox(
-                width: 120,
-                height: 120,
+                width: widget.maxWidth > 980 ?110 :  widget.maxWidth < 520?100:120,
+                height:  widget.maxWidth > 980 ?110 :  widget.maxWidth < 520?100:120,
                 child: CircularProgressIndicator(
                   strokeWidth: 10,
-                  value: (widget.percentage*percentageAnimation!.value).round()/100,
-                  valueColor:
-                  const AlwaysStoppedAnimation<Color>(
+                  value:
+                      (widget.percentage * percentageAnimation!.value).round() /
+                          100,
+                  valueColor: const AlwaysStoppedAnimation<Color>(
                     AppColors.primaryColor,
                   ),
                   strokeCap: StrokeCap.round,
@@ -54,8 +67,9 @@ class _PercentageWidgetState extends State<PercentageWidget> with SingleTickerPr
                 ),
               ),
               Text18(
-                text: "${(widget.percentage*percentageAnimation!.value).round()}%",
-                size: 30,
+                text:
+                    "${(widget.percentage * percentageAnimation!.value).round()}%",
+                size: widget.maxWidth > 980 ? 26 :widget.maxWidth < 520?24: 28,
                 weight: FontWeight.w700,
                 textColor: Colors.white,
               ),
@@ -66,7 +80,7 @@ class _PercentageWidgetState extends State<PercentageWidget> with SingleTickerPr
           ),
           Text18(
             text: widget.title,
-            size: 22,
+            size: 20,
           ),
         ],
       ),

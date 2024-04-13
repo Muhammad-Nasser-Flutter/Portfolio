@@ -9,16 +9,16 @@ import '../widgets/career.dart';
 import '../widgets/personal_data_widget.dart';
 import '../widgets/skills_widget.dart';
 
-class TabletAboutScreen extends StatefulWidget {
-  const TabletAboutScreen({super.key, required this.maxWidth});
+class MobileAboutScreen extends StatefulWidget {
+  const MobileAboutScreen({super.key, required this.maxWidth});
 
   final double maxWidth;
 
   @override
-  State<TabletAboutScreen> createState() => _TabletAboutScreenState();
+  State<MobileAboutScreen> createState() => _MobileAboutScreenState();
 }
 
-class _TabletAboutScreenState extends State<TabletAboutScreen> {
+class _MobileAboutScreenState extends State<MobileAboutScreen> {
   ScrollController scrollController = ScrollController();
   double scrollOffset = 0;
 
@@ -98,7 +98,7 @@ class _TabletAboutScreenState extends State<TabletAboutScreen> {
           // DOWNLOAD CV
           PositionedDirectional(
             start: 50,
-            top: 1000,
+            top: 870,
             child: AnimatedSliderButton(
               onTap: () => downloadFile(),
               text: "DOWNLOAD CV",

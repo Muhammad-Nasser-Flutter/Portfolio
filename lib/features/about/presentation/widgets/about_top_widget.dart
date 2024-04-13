@@ -5,7 +5,8 @@ import '../../../../core/widgets/Animations/fade_in_scale_animation.dart';
 import '../../../../core/widgets/custom_texts.dart';
 
 class AboutTopWidget extends StatelessWidget {
-  const AboutTopWidget({super.key});
+  const AboutTopWidget({super.key, required this.maxWidth});
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class AboutTopWidget extends StatelessWidget {
           Text18(
             alignment: TextAlign.center,
             text: "RESUME",
-            size: 110,
+            size: maxWidth<520?90:110,
             spacing: 5,
             textColor: Colors.grey.withOpacity(0.2),
             weight: FontWeight.w900,
@@ -28,7 +29,7 @@ class AboutTopWidget extends StatelessWidget {
             children: [
               Text18(
                 text: "ABOUT ",
-                size: 50,
+                size: maxWidth<520?45:50,
                 spacing: 2,
                 textColor: Colors.white,
                 weight: FontWeight.w900,
