@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theming/assets.dart';
 import '../../../../core/widgets/Animations/fade_in_animation.dart';
+import '../../../../core/widgets/Animations/fade_in_scale_animation.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({super.key, required this.maxWidth});
