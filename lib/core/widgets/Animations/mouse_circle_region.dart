@@ -29,7 +29,9 @@ class _MouseCircleRegionState extends State<MouseCircleRegion> {
         if (mounted) {
           setState(
             () {
-              widget.mouseOffset = p.position + Offset(0, widget.scrollOffset);
+              Future.delayed(Durations.short2, () {
+                widget.mouseOffset = p.position + Offset(0, widget.scrollOffset);
+              });
             },
           );
         }
