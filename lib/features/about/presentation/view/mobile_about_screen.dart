@@ -20,20 +20,20 @@ class MobileAboutScreen extends StatefulWidget {
 
 class _MobileAboutScreenState extends State<MobileAboutScreen> {
   ScrollController scrollController = ScrollController();
-  double scrollOffset = 0;
+  // double scrollOffset = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    scrollController.addListener(_scrollListener);
+    // scrollController.addListener(_scrollListener);
   }
 
-  void _scrollListener() {
-    setState(() {
-      scrollOffset = scrollController.offset;
-    });
-  }
+  // void _scrollListener() {
+  //   setState(() {
+  //     scrollOffset = scrollController.offset;
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,7 +41,9 @@ class _MobileAboutScreenState extends State<MobileAboutScreen> {
       child: Stack(
         children: [
           MouseCircleRegion(
-            scrollOffset: scrollOffset,
+            hasScroll: true,
+            scrollController: scrollController,
+            // scrollOffset: scrollOffset,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

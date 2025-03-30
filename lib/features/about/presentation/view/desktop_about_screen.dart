@@ -40,7 +40,9 @@ class _DesktopAboutScreenState extends State<DesktopAboutScreen> {
       child: Stack(
         children: [
           MouseCircleRegion(
-            scrollOffset: scrollOffset,
+            hasScroll: true,
+            scrollController: scrollController,
+            // scrollOffset: scrollOffset,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -20,7 +20,7 @@ class TabletAboutScreen extends StatefulWidget {
 
 class _TabletAboutScreenState extends State<TabletAboutScreen> {
   ScrollController scrollController = ScrollController();
-  double scrollOffset = 0;
+  // double scrollOffset = 0;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _TabletAboutScreenState extends State<TabletAboutScreen> {
 
   void _scrollListener() {
     setState(() {
-      scrollOffset = scrollController.offset;
+      // scrollOffset = scrollController.offset;
     });
   }
   @override
@@ -41,7 +41,9 @@ class _TabletAboutScreenState extends State<TabletAboutScreen> {
       child: Stack(
         children: [
           MouseCircleRegion(
-            scrollOffset: scrollOffset,
+            scrollController: scrollController,
+            hasScroll: true,
+            // scrollOffset: scrollOffset,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

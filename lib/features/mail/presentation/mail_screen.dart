@@ -40,7 +40,7 @@ class MailScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                    "assets/images/My Picture.jpg",
+                                    "assets/images/My Picture.jpeg",
                                   ),
                                   fit: BoxFit.cover)),
                         ),
@@ -143,7 +143,7 @@ class MailScreen extends StatelessWidget {
                             radius: 120,
                             backgroundColor: Color(0xFF252525),
                             backgroundImage:
-                                AssetImage("assets/images/My Picture.jpg"),
+                                AssetImage("assets/images/My Picture.jpeg"),
                           ),
                         ),
                       ),
@@ -232,7 +232,7 @@ class MailScreen extends StatelessWidget {
                             radius: 100,
                             backgroundColor: Color(0xFF252525),
                             backgroundImage:
-                                AssetImage("assets/images/My Picture.jpg"),
+                                AssetImage("assets/images/My Picture.jpeg"),
                           ),
                         ),
                       ),
